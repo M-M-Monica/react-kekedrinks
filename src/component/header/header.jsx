@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, Dropdown } from 'antd';
+import { Menu, Dropdown, Button } from 'antd';
+import { CaretDownOutlined } from '@ant-design/icons';
 import MyService from '../../service/request.jsx';
 import LoginService from '../../service/login-service.jsx';
 const ms = new MyService();
 const ls = new LoginService();
 import './header.scss';
-//import './nav.scss';
 import logo from '../../static/drink.png';
+import cart from '../../static/cart.png';
+import my from '../../static/my.png';
 
 export default class Header extends Component{
   constructor(props){
@@ -33,7 +35,7 @@ export default class Header extends Component{
         </Menu.Item>
         <Menu.Item>
           <Link to="/login" onClick={this.onLogout}>
-            修改个人信息
+            修改地址
           </Link>
         </Menu.Item>
         <Menu.Item>
@@ -51,16 +53,16 @@ export default class Header extends Component{
         </div>
         <div className="header-item">
           <ul className="sider-menu" role="menu">
-            <NavLink exact className="sider-menu-item" activeClassName="item-selected" to="/drinks">
+            <NavLink exact activeClassName="item-selected" to="/drinks">
             <li>Drinks</li>
             </NavLink>
-            <NavLink className="sider-menu-item" activeClassName="item-selected" to="/dessert">
+            <NavLink activeClassName="item-selected" to="/dessert">
               <li>Dessert</li>
             </NavLink>
-            <NavLink className="sider-menu-item" activeClassName="item-selected" to="/aboutus">
+            <NavLink activeClassName="item-selected" to="/aboutus">
               <li>About us</li>
             </NavLink>
-            <NavLink className="sider-menu-item" activeClassName="item-selected" to="/card">
+            <NavLink activeClassName="item-selected" to="/card">
               <li>Card</li>
             </NavLink>
           </ul>
@@ -70,19 +72,27 @@ export default class Header extends Component{
           this.state.tel
           ?(
             <div>
-            <Link to="/cart" onClick={this.onLogout}>
-              <img src="/img/cart.png" />
-            </Link>
-            <Dropdown overlay={menu}>
-              <a className="ant-dropdown-link">
-                <img src="/img/my.png" />
-                <span>用户:{this.state.tel}</span>
-                <DownOutlined />
-              </a>
-            </Dropdown>
-            </div>)
-          :(<div><Link to="/signin" className="ant-dropdown-link">Sign in</Link>
-            <Link to="/signup" className="ant-dropdown-link">Sign up</Link></div>)
+              <Link to="/cart" onClick={this.onLogout}>
+                <img src={cart} className="img-cart"/>
+              </Link>
+              <Dropdown overlay={menu}>
+                <a className="ant-dropdown-link">
+                  <img src={my} />
+                  <CaretDownOutlined />
+                </a>
+              </Dropdown>
+            </div>
+            )
+          :(
+            <div>
+              <Link to="/signin" className="ant-dropdown-link">
+                <Button type="primary">Sign in</Button>
+              </Link>
+              <Link to="/signup" className="ant-dropdown-link">
+                <Button type="primary">Sign up</Button>
+              </Link>
+            </div>
+            )
         }
         </div>
       </header>

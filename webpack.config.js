@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -17,6 +18,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacement()
     new htmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
@@ -26,6 +28,7 @@ module.exports = {
   mode: 'development',
   devServer: {
     port: 8800,
+    hot: true,
     historyApiFallback: {
       index: '/dist/index.html'
     },
