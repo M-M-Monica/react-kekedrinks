@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Layout from './component/layout/layout.jsx';
 import Login from './page/login/login.jsx';
-import Home from './page/home/home.jsx';
 import User from './page/user/user.jsx';
+import Cart from './page/cart/cart.jsx';
+import Home from './page/home/home.jsx';
 import Product from './page/product/product.jsx';
 import ProductEdit from './page/product/edit.jsx';
 import Order from './page/order/order.jsx';
@@ -19,7 +20,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/user" component={User}/>
-          <Route exact path="/product" component={Product}/>
+          <Route path="/cart" component={Cart}/>
+          <Route exact path="/drinks" component={Product}/>
+          <Route exact path="/dessert" component={Product}/>
           <Route path="/product/edit/:productId?" component={ProductEdit}/>
           <Route exact path="/order" component={Order}/>
           <Route path="/order/detail/:orderId" component={OrderDetail}/>

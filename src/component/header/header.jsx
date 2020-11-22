@@ -29,12 +29,12 @@ export default class Header extends Component{
   	const menu=(
       <Menu>
         <Menu.Item>
-          <Link to="/login" onClick={this.onLogout}>
+          <Link to="/order">
             我的订单
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <Link to="/login" onClick={this.onLogout}>
+          <Link to="/address">
             修改地址
           </Link>
         </Menu.Item>
@@ -48,8 +48,10 @@ export default class Header extends Component{
     return(
       <header className="site-layout-header">
         <div className="header-item">
-          <img src={logo} className="logo"></img>
-          <span>KEKE Drinks</span>
+            <img src={logo} className="logo"></img>
+            <span>KEKE Drinks</span>
+          {/*<Link to="/home">
+          </Link>*/}
         </div>
         <div className="header-item">
           <ul className="sider-menu" role="menu">
@@ -68,7 +70,7 @@ export default class Header extends Component{
           </ul>
         </div>
         <div className="header-item">
-        {
+        {/*
           this.state.tel
           ?(
             <div>
@@ -93,7 +95,18 @@ export default class Header extends Component{
               </Link>
             </div>
             )
-        }
+        */}
+            <div>
+              <Link to="/cart" onClick={this.onLogout}>
+                <img src={cart} className="img-cart"/>
+              </Link>
+              <Dropdown overlay={menu}>
+                <a className="ant-dropdown-link">
+                  <img src={my} />
+                  <CaretDownOutlined />
+                </a>
+              </Dropdown>
+            </div>
         </div>
       </header>
     );
