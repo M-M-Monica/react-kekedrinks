@@ -121,13 +121,13 @@ export default class Order extends Component {
       },
     ];
 		return (
-			<div>
-		    <Search
+			<div id="order_list">
+		    {/* <Search
           size="middle"
           addonBefore="按订单号查询"
           enterButton="Search"
           onSearch={(orderId)=>{this.onSearch(orderId)}}
-        />
+        /> */}
 				<Table
           columns={columns}
           dataSource={this.state.list}

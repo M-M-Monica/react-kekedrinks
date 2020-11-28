@@ -34,11 +34,6 @@ export default class Header extends Component{
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <Link to="/address">
-            修改地址
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
           <Link to="/login" onClick={this.onLogout}>
             退出登录
           </Link>

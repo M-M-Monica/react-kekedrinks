@@ -1,0 +1,41 @@
+#cart_list{
+  width: 80%;
+  height: 100%;
+  padding: 10px;
+  .list-item{
+    height: 65px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 3px 1px #efaf2780;
+    &:hover{
+      border: 1px solid #efaf27;
+    }
+    img{
+      width: 40px;
+      &:last-child{
+        width: 25px;
+      }
+    }
+    .list-item-info{
+      flex: 0 0 70%;
+      display: flex;
+      justify-content: space-around;
+      span{
+        &:last-child{
+          color: #F44336;
+        }
+      }
+    }
+  }
+  .sum{
+    font-size: 17px;
+    justify-content: flex-end;
+    padding-right: 70px;
+    .total{
+      margin: 10px;
+      color: #F44336;
+    }
+  }
+}

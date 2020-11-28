@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Layout from './component/layout/layout.jsx';
 import Login from './page/login/login.jsx';
-import User from './page/user/user.jsx';
 import Cart from './page/cart/cart.jsx';
 import Home from './page/home/home.jsx';
 import Product from './page/product/product.jsx';
@@ -19,7 +18,6 @@ class App extends Component {
       <Layout>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/user" component={User}/>
           <Route path="/cart" component={Cart}/>
           <Route exact path="/drinks" component={Product}/>
           <Route exact path="/dessert" component={Product}/>
