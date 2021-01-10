@@ -65,7 +65,7 @@ export default class Header extends Component{
           </ul>
         </div>
         <div className="header-item">
-        {/*
+        {
           this.state.tel
           ?(
             <div>
@@ -82,16 +82,16 @@ export default class Header extends Component{
             )
           :(
             <div>
-              <Link to="/signin" className="ant-dropdown-link">
+              <Link to="/login" className="ant-dropdown-link">
                 <Button type="primary">Sign in</Button>
               </Link>
-              <Link to="/signup" className="ant-dropdown-link">
+              <Link to="/logout" className="ant-dropdown-link">
                 <Button type="primary">Sign up</Button>
               </Link>
             </div>
             )
-        */}
-            <div>
+        }
+          {/*<div>
               <Link to="/cart" onClick={this.onLogout}>
                 <img src={cart} className="img-cart"/>
               </Link>
@@ -101,7 +101,7 @@ export default class Header extends Component{
                   <CaretDownOutlined />
                 </a>
               </Dropdown>
-            </div>
+            </div>*/}
         </div>
       </header>
     );

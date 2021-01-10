@@ -28,7 +28,7 @@ const devConfig = {
       index: '/dist/index.html'
     },
     proxy: {
-      '/manage' : {
+      '/' : {
         target: 'http://localhost:3000',
         changeOrigin : true
       }

@@ -23,30 +23,13 @@ export default class Order extends Component {
   }
   // 加载商品列表
   loadOrderList() {
-    let listParam = {
-      listType: this.state.listType,
-      pageNum: this.state.pageNum
-    };
-    if(this.state.listType === 'search') {
-      listParam.orderId = this.state.orderId;
-    }
-    os.getOrderList(listParam).then(res => {
+    os.getOrderList().then(res => {
       this.setState({
         count: res.count,
         list: res.rows
       });
     }, errMsg => {
       ms.errorTips(errMsg)
-    });
-  }
-  // 搜索
-  onSearch(orderId) {
-    this.setState({
-      listType: 'search',
-      pageNum: 1,
-      orderId: orderId
-    },() => {
-      this.loadOrderList();
     });
   }
   // 页数发生变化的时候
@@ -56,13 +39,6 @@ export default class Order extends Component {
     }, () => {
       this.loadOrderList();
     });
-  }
-  onSendGoods(orderId){
-    if(window.confirm('订单已发货？')){
-      os.sendGoods(orderId).then((res) => {
-        this.loadOrderList();
-      });
-    }
   }
 	render() {
     const columns = [

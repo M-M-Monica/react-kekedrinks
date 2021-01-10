@@ -20,13 +20,15 @@ export default class Login extends Component {
   onFinish(values){
     let loginInfo = {
       tel: values.telephone,
-      password: values.password
+      password: values.password,
+      type: 150
     },
     checkResult = ls.checkLoginInfo(loginInfo);
     if(checkResult.status) {
 			ls.login(loginInfo).then(res => {
 				let tel = loginInfo.tel
 				ms.setStorage('userTel', tel);
+				ms.setStorage('token', res);
 				this.setState({
 					telephone: tel
 				});

@@ -4,7 +4,7 @@ export default class MyService {
   request(param) {
     return new Promise((resolve, reject) => {
       axios({
-        method: param.method || 'get',
+        method: param.method || 'post',
         url: param.url || '',
         dataType: param.dataType || 'json',
         data: param.data || null,
