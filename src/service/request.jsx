@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Base64 } from 'js-base-64';
 
 export default class MyService {
   request(param) {
@@ -8,6 +9,9 @@ export default class MyService {
         url: param.url || '',
         dataType: param.dataType || 'json',
         data: param.data || null,
+        header: {
+          Authorization: this._encode()
+        }
       }).then(res => {
         if(res.status === 200){
           resolve(res.data);
@@ -53,5 +57,10 @@ export default class MyService {
   // 删除本地存储
   removeStorage(name) {
     window.sessionStorage.removeItem(name);
+  }
+  _encode(){
+    const token = window.sessionStorage.getItem('token')
+    const base64 = Base64.encode(token + ':')
+    return 'Basic ' + base64
   }
 }

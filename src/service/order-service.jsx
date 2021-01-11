@@ -2,13 +2,6 @@ import MService from './request.jsx';
 const ms = new MService();
 
 export default class OrderService {
-  // 获取我的订单
-  showMyOrder(){
-    return ms.request({
-      methods: 'get',
-      url: '/order/list'
-    })
-  }
   // 生成订单
   createOrder(){
     let cart = this.data.cart

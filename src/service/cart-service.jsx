@@ -9,12 +9,6 @@ export default class CartService {
       url: `/cart/list`
     });
   }
-  // 添加商品到购物车
-  addGood(id) {
-    return ms.request({
-      url: `/cart/add/${id}`
-    });
-  }
   // 增加商品
   increase(id){
     ms.request({

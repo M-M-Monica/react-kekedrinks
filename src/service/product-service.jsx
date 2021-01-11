@@ -10,14 +10,10 @@ export default class ProductService {
       url: `/product/list/${category}/${pageNum}`
     });
   }
-  // 获取商品详情
-  // getProductDetail(productId) {
-  //   return ms.request({
-  //     method: 'post',
-  //     url: '/manage/product/detail',
-  //     data: {
-  //       id : productId
-  //     }
-  //   });
-  // }
+  // 添加商品到购物车
+  addGood(id) {
+    return ms.request({
+      url: `/cart/add/${id}`
+    });
+  }
 }
