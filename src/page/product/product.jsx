@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
+import { Pagination } from 'antd';
 import MyService from '../../service/request.jsx';
 import ProductService from '../../service/product-service.jsx';
-import CartService from '../../service/cart-service.jsx';
+//import CartService from '../../service/cart-service.jsx';
 const ms = new MyService();
 const ps = new ProductService();
-const cs = new CartService();
+//const cs = new CartService();
 import './product.scss';
+import add from '../../static/add.png'
 
 export default class Product extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      //category: this.props.match.path,
       list: [],
       count: 1,
       pageNum: 1,
-      listType: this.props.match.path
+      pageSize: 4,
+      category: this.props.match.path
     };
     this.addGood = this.addGood.bind(this);
 	}
@@ -25,10 +27,13 @@ export default class Product extends Component {
   // 加载商品列表
   loadProductList() {
     let listParam = {
-      listType: this.state.listType,
-      pageNum: this.state.pageNum
+      category: this.state.category,
+      pageNum: this.state.pageNum,
+      pageSize: this.state.pageSize
     };
+    console.log('listParam',listParam)
     ps.getProductList(listParam).then(res => {
+      console.log('res',res)
       this.setState({
         count: res.count,
         list: res.rows
@@ -45,7 +50,7 @@ export default class Product extends Component {
     });
   }
   addGood(id){
-    cs.addGood(id).then(res => {
+    ps.addGood(id).then(res => {
       console.log('addgood', res)
       // this.setState({
       //   count: res.count,
@@ -57,22 +62,30 @@ export default class Product extends Component {
   }
 	render() {
 		return (
-			<div id="product_list">
-        {
-          this.state.list.map((item, index) => {
-            return (
-              <div className="list-item">
-                <img className="pic" src={item.img} />
-                <div className="list-item-info">
-                  <p>{item.name}</p>
-                  <p>￥：{item.price}</p>
-                </div>
-                <img id="add" src={add} onClick={this.addGood(item.id)}/>
+      <div id="product_list">
+      {
+        this.state.list.map((item, index) => {
+          return (
+            <div className="list-item">
+              <img className="pic" src={item.img} />
+              <div className="list-item-info">
+                <p>{item.name}</p>
+                <p>￥：{item.price}</p>
               </div>
-            );
-          })
-        }
-			</div>
+              <img id="add" src={add} onClick={()=>this.addGood(item.id)}/>
+            </div>
+          );
+        })
+      }
+      <div className="page">
+        <Pagination
+          current={this.state.pageNum}
+          pageSize={this.state.pageSize}
+          total={this.state.count}
+          onChange={(pageNum)=>this.onPageNumChange(pageNum)}
+        />
+      </div>
+      </div>
 		);
 	}
 }

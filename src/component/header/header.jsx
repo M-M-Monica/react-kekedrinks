@@ -17,6 +17,7 @@ export default class Header extends Component{
     this.state = {
       tel: ms.getStorage('userTel')
     }
+    this.onLogout = this.onLogout.bind(this)
   }
   onLogout(){
     ls.logout().then(res => {
@@ -45,13 +46,11 @@ export default class Header extends Component{
         <div className="header-item">
             <img src={logo} className="logo"></img>
             <span>KEKE Drinks</span>
-          {/*<Link to="/home">
-          </Link>*/}
         </div>
         <div className="header-item">
           <ul className="sider-menu" role="menu">
             <NavLink exact activeClassName="item-selected" to="/drinks">
-            <li>Drinks</li>
+              <li>Drinks</li>
             </NavLink>
             <NavLink activeClassName="item-selected" to="/dessert">
               <li>Dessert</li>
@@ -69,7 +68,7 @@ export default class Header extends Component{
           this.state.tel
           ?(
             <div>
-              <Link to="/cart" onClick={this.onLogout}>
+              <Link to="/cart" onClick={()=>this.onLogout}>
                 <img src={cart} className="img-cart"/>
               </Link>
               <Dropdown overlay={menu}>
@@ -91,17 +90,6 @@ export default class Header extends Component{
             </div>
             )
         }
-          {/*<div>
-              <Link to="/cart" onClick={this.onLogout}>
-                <img src={cart} className="img-cart"/>
-              </Link>
-              <Dropdown overlay={menu}>
-                <a className="ant-dropdown-link">
-                  <img src={my} />
-                  <CaretDownOutlined />
-                </a>
-              </Dropdown>
-            </div>*/}
         </div>
       </header>
     );

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Base64 } from 'js-base-64';
+import { Base64 } from 'js-base64';
 
 export default class MyService {
   request(param) {

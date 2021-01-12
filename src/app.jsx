@@ -7,9 +7,9 @@ import Login from './page/login/login.jsx';
 import Cart from './page/cart/cart.jsx';
 import Home from './page/home/home.jsx';
 import Product from './page/product/product.jsx';
-import ProductEdit from './page/product/edit.jsx';
+//import ProductEdit from './page/product/edit.jsx';
 import Order from './page/order/order.jsx';
-import OrderDetail from './page/order/detail.jsx';
+//import OrderDetail from './page/order/detail.jsx';
 import ErrorPage from './page/error/error.jsx';
 
 class App extends Component {
@@ -21,9 +21,9 @@ class App extends Component {
           <Route path="/cart" component={Cart}/>
           <Route exact path="/drinks" component={Product}/>
           <Route exact path="/dessert" component={Product}/>
-          <Route path="/product/edit/:productId?" component={ProductEdit}/>
+          {/* <Route path="/product/edit/:productId?" component={ProductEdit}/> */}
           <Route exact path="/order" component={Order}/>
-          <Route path="/order/detail/:orderId" component={OrderDetail}/>
+          {/* <Route path="/order/detail/:orderId" component={OrderDetail}/> */}
           <Route component={ErrorPage}/>
         </Switch>
       </Layout>
