@@ -18,12 +18,10 @@ class App extends Component {
       <Layout>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/cart" component={Cart}/>
-          <Route exact path="/drinks" component={Product}/>
-          <Route exact path="/dessert" component={Product}/>
-          {/* <Route path="/product/edit/:productId?" component={ProductEdit}/> */}
+          <Route exact path="/drinks" component={Product} key="drinks"/>
+          <Route exact path="/dessert" component={Product} key="dessert"/>
+          <Route exact path="/cart" component={Cart}/>
           <Route exact path="/order" component={Order}/>
-          {/* <Route path="/order/detail/:orderId" component={OrderDetail}/> */}
           <Route component={ErrorPage}/>
         </Switch>
       </Layout>

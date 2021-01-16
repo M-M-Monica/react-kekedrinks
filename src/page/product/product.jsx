@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Pagination } from 'antd';
+import { message, Pagination } from 'antd';
 import MyService from '../../service/request.jsx';
 import ProductService from '../../service/product-service.jsx';
 //import CartService from '../../service/cart-service.jsx';
@@ -19,7 +19,6 @@ export default class Product extends Component {
       pageSize: 4,
       category: this.props.match.path
     };
-    this.addGood = this.addGood.bind(this);
 	}
   componentDidMount() {
     this.loadProductList();
@@ -51,11 +50,7 @@ export default class Product extends Component {
   }
   addGood(id){
     ps.addGood(id).then(res => {
-      console.log('addgood', res)
-      // this.setState({
-      //   count: res.count,
-      //   list: res.rows
-      // });
+      message.success('添加成功');
     }, errMsg => {
       ms.errorTips(errMsg)
     });

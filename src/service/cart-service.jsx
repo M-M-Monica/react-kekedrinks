@@ -11,29 +11,29 @@ export default class CartService {
   }
   // 增加商品
   increase(id){
-    ms.request({
+    return ms.request({
+      method: 'get',
       url: `/cart/increase/${id}`
     });
   }
   // 减少商品
-  decrease(e) {
-    let id = e.currentTarget.dataset.id
-    let count = e.currentTarget.dataset.count
-    if(count>1){
-      ms.request({
-        url: `/cart/decrease/${id}`
-      })
-    }
+  decrease(id) {
+    return ms.request({
+      method: 'get',
+      url: `/cart/decrease/${id}`
+    })
   }
   // 选择取消选择
   checkboxChange(id) {
     return ms.request({
+      method: 'get',
       url: `/cart/select/${id}`
     });
   }
   // 删除商品
   deleteGood(id) {
     return ms.request({
+      method: 'get',
       url: `/cart/delete/${id}`
     });
   }

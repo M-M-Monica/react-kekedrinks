@@ -14,6 +14,7 @@ export default class ProductService {
   // 添加商品到购物车
   addGood(id) {
     return ms.request({
+      method: 'get',
       url: `/cart/add/${id}`
     });
   }

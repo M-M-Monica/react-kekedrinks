@@ -1,43 +1,60 @@
 import React, { Component } from 'react';
+import { message, Checkbox, Button } from 'antd';
 import MyService from '../../service/request.jsx';
 import CartService from '../../service/cart-service.jsx';
 const ms = new MyService();
 const cs = new CartService();
 import './cart.scss';
-import trash from '../../static/trash.png'
+import trash from '../../static/trash.png';
+import de_pic from '../../static/de.png';
+import in_pic from '../../static/in.png';
 
 export default class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
       count: 0,
-      list: []
-    }
+      list: [],
+      total: 0
+    };
+    //this.onChange = this.onChange.bind(this)
 	}
 	componentDidMount() {
     this.loadCartList();
   }
   // 加载购物车列表
   loadCartList() {
-    ps.getCartList().then(res => {
+    cs.getCartList().then(res => {
+      console.log('cart',res)
+      let cartList = res
+      let sum = 0
+      let single
+      if(cartList.length != 0){
+        cartList.forEach((item)=>{
+          single = item.CartList.status === 1 ? item.price*item.CartList.count : 0
+          sum += single
+          return sum
+        })
+      }
       this.setState({
-        count: res.count,
-        list: res.rows
-      });
+        list: cartList,
+        total: sum
+      })
     }, errMsg => {
       ms.errorTips(errMsg)
     });
   }
   deleteGood(id){
     cs.deleteGood(id).then(res => {
-      console.log('deleteGood', res)
+      message.success('删除成功');
+      this.loadCartList();
     }, errMsg => {
       ms.errorTips(errMsg)
     });
   }
   selectChange(id){
     cs.checkboxChange(id).then(res => {
-      console.log('deleteGood', res)
+      this.loadCartList();
     }, errMsg => {
       ms.errorTips(errMsg)
     })
@@ -45,17 +62,16 @@ export default class Home extends Component {
   // 增加商品
   increase(id) {
     cs.increase(id).then(res => {
-      console.log('increase', res)
+      this.loadCartList();
     }, errMsg => {
       ms.errorTips(errMsg)
     })
   }
   // 减少商品
-  decrease(id) {
-    let count = e.currentTarget.dataset.count
+  decrease(id,count) {
     if(count>1){
       cs.decrease(id).then(res => {
-        console.log('decrease', res)
+        this.loadCartList();
       }, errMsg => {
         ms.errorTips(errMsg)
       })
@@ -68,22 +84,27 @@ export default class Home extends Component {
           this.state.list.map((item, index) => {
             return (
               <div className="list-item">
+                <Checkbox checked={item.CartList.status} onChange={()=>this.selectChange(item.id)}></Checkbox>
                 <img className="pic" src={item.img} />
                 <div className="list-item-info">
                   <span>{item.name}</span>
-                  <span>数量：{item.num}</span>
+                  <span className="count">
+                  <img src={de_pic} onClick={()=>this.decrease(item.id, item.CartList.count)}/>
+                    <span>{item.CartList.count}</span>
+                  <img src={in_pic} onClick={()=>this.increase(item.id)}/>
+                  </span>
                   <span>单价：{item.price}</span>
-                  <span>￥：{item.price}</span>
+                  <span>￥：{item.CartList.count*item.price}</span>
                 </div>
-                <img id="delete" src={trash} onClick={this.deleteGood(item.id)}/>
+                <img id="delete" src={trash} onClick={()=>this.deleteGood(item.id)}/>
               </div>
             );
           })
         }
         <div className="list-item sum">
           <span>合计</span>
-          <span className="total">￥：item.price</span>
-          <button id="pay" className="btn btn-danger" disabled>结算</button>
+          <span className="total">￥：{this.state.total}</span>
+          <Button id="pay" danger>结算</Button>
         </div>
 			</div>
 		);

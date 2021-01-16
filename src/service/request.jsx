@@ -9,7 +9,7 @@ export default class MyService {
         url: param.url || '',
         dataType: param.dataType || 'json',
         data: param.data || null,
-        header: {
+        headers: {
           Authorization: this._encode()
         }
       }).then(res => {
@@ -59,6 +59,7 @@ export default class MyService {
     window.sessionStorage.removeItem(name);
   }
   _encode(){
+    // const token = this.getStorage('token')
     const token = window.sessionStorage.getItem('token')
     const base64 = Base64.encode(token + ':')
     return 'Basic ' + base64

@@ -20,11 +20,8 @@ export default class Header extends Component{
     this.onLogout = this.onLogout.bind(this)
   }
   onLogout(){
-    ls.logout().then(res => {
-      ms.removeStorage('userTel');
-    }, errMsg => {
-      ms.errorTips(errMsg)
-    })
+    ms.removeStorage('userTel');
+    ms.removeStorage('token');
   }
   render(){
   	const menu=(
@@ -68,7 +65,7 @@ export default class Header extends Component{
           this.state.tel
           ?(
             <div>
-              <Link to="/cart" onClick={()=>this.onLogout}>
+              <Link to="/cart">
                 <img src={cart} className="img-cart"/>
               </Link>
               <Dropdown overlay={menu}>
@@ -82,10 +79,10 @@ export default class Header extends Component{
           :(
             <div>
               <Link to="/login" className="ant-dropdown-link">
-                <Button type="primary">Sign in</Button>
+                <Button>Sign in</Button>
               </Link>
               <Link to="/logout" className="ant-dropdown-link">
-                <Button type="primary">Sign up</Button>
+                <Button>Sign up</Button>
               </Link>
             </div>
             )
