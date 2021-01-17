@@ -1,4 +1,41 @@
-#order_list{
-  width: 90%;
-  height: 90%;
+#order{
+  width: 85%;
+  height: 100%;
+  .list-item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    img{
+      width: 40px;
+      height: 45px;
+      margin-right: 20px;
+    }
+    span{
+      flex: 0 0 20%;
+      text-align: center;
+    }
+  }
+  .mask{
+    width: 90%;
+    height: 75%;
+    z-index: 100;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #00000042;
+    .user-info{
+      width: 400px;
+      z-index: 1000;
+      background-color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  button{
+    float: right;
+    margin-right: 10px;
+  }
 }

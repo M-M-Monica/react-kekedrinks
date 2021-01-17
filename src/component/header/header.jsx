@@ -27,7 +27,7 @@ export default class Header extends Component{
   	const menu=(
       <Menu>
         <Menu.Item>
-          <Link to="/order">
+          <Link to="/user">
             我的订单
           </Link>
         </Menu.Item>
@@ -78,11 +78,11 @@ export default class Header extends Component{
             )
           :(
             <div>
-              <Link to="/login" className="ant-dropdown-link">
-                <Button>Sign in</Button>
+              <Link to="/login">
+                <Button className="btn" size="small">Sign in</Button>
               </Link>
-              <Link to="/logout" className="ant-dropdown-link">
-                <Button>Sign up</Button>
+              <Link to="/login">
+                <Button className="btn" size="small">Sign up</Button>
               </Link>
             </div>
             )

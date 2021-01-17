@@ -7,9 +7,8 @@ import Login from './page/login/login.jsx';
 import Cart from './page/cart/cart.jsx';
 import Home from './page/home/home.jsx';
 import Product from './page/product/product.jsx';
-//import ProductEdit from './page/product/edit.jsx';
 import Order from './page/order/order.jsx';
-//import OrderDetail from './page/order/detail.jsx';
+import User from './page/user/user.jsx';
 import ErrorPage from './page/error/error.jsx';
 
 class App extends Component {
@@ -22,6 +21,7 @@ class App extends Component {
           <Route exact path="/dessert" component={Product} key="dessert"/>
           <Route exact path="/cart" component={Cart}/>
           <Route exact path="/order" component={Order}/>
+          <Route exact path="/user" component={User}/>
           <Route component={ErrorPage}/>
         </Switch>
       </Layout>

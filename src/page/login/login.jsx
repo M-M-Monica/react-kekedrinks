@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 const { Item } = Form;
 import MyService from '../../service/request.jsx';

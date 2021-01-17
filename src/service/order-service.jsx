@@ -3,36 +3,27 @@ const ms = new MService();
 
 export default class OrderService {
   // 生成订单
-  createOrder(){
-    let cart = this.data.cart
-    let total = this.data.total
-    let cartList = []
-    cart.forEach((item)=>{
-      if(item.CartList.status === 1){
-        cartList.push(item)
-      }
-    })
-    wx.navigateTo({
-      url: `/pages/pay/pay?cart=${JSON.stringify(cartList)}&total=${total}`
-    })
+  createOrder(goodsArr, total){
     return ms.request({
       url: '/order/create',
       data: {
         goodsArr,
         total
-      },
+      }
     })
   }
   // 支付订单
-  goToPay(){
+  goToPay(id){
     return ms.request({
-      url: `/order/pay/${this.data.order.id}`
+      method: 'get',
+      url: `/order/pay/${id}`
     })
   }
   // 取消订单
-  cancelOrder(){
+  cancelOrder(id){
     return ms.request({
-      url: `/order/cancel/${this.data.order.id}`
+      method: 'get',
+      url: `/order/cancel/${id}`
     })
   }
   // 获取订单详情

@@ -2,24 +2,24 @@ import MService from './request.jsx';
 const ms = new MService();
 
 export default class UserService {
-  getUserList(pageNum) {
+  changeUserInfo(userInfo){
     return ms.request({
-      method: 'get',
-      url: '/user/info',
+      url: '/user/update',
       data: {
-        pageNum
+        userInfo
       }
-    });
+    })
   }
   // 获取我的订单
   showMyOrder(){
     return ms.request({
-      methods: 'get',
+      method: 'get',
       url: '/order/list'
     })
   }
   goToPay(id){
     return ms.request({
+      method: 'get',
       url: `/order/pay/${id}`
     })
   }

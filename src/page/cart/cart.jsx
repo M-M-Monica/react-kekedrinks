@@ -13,11 +13,10 @@ export default class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      count: 0,
       list: [],
-      total: 0
+      total: 0,
+      clickBtn: true
     };
-    //this.onChange = this.onChange.bind(this)
 	}
 	componentDidMount() {
     this.loadCartList();
@@ -38,7 +37,8 @@ export default class Home extends Component {
       }
       this.setState({
         list: cartList,
-        total: sum
+        total: sum,
+        clickBtn: sum>0?false:true
       })
     }, errMsg => {
       ms.errorTips(errMsg)
@@ -77,6 +77,22 @@ export default class Home extends Component {
       })
     }
   }
+  goToPay(){
+    let cart = this.state.list
+    let goodsArr = []
+    cart.forEach((item)=>{
+      if(item.CartList.status === 1){
+        goodsArr.push(item)
+      }
+    })
+    this.props.history.push({
+      pathname: '/order',
+      query: {
+        goodsArr: JSON.stringify(goodsArr),
+        total: this.state.total
+      }
+    })
+  }
 	render() {
 		return (
       <div id="cart_list">
@@ -104,7 +120,7 @@ export default class Home extends Component {
         <div className="list-item sum">
           <span>合计</span>
           <span className="total">￥：{this.state.total}</span>
-          <Button id="pay" danger>结算</Button>
+          <Button danger disabled={this.state.clickBtn} onClick={()=>this.goToPay()}>结算</Button>
         </div>
 			</div>
 		);
