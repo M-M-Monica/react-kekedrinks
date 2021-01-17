@@ -1,9 +1,9 @@
 .site-layout-header{
+  height: 45px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-	flex: 0 0 8%;
   background-color: #fff;
   border-radius: 30px;
   border: 2px solid #efaf27;
@@ -44,7 +44,12 @@
       .img-cart{
         margin-right: 20px;
       }
-  	}
+    }
+    .btn{
+      margin-right: 8px;
+      border-color: #efaf27;
+      color: #efaf27;
+    }
   }
 	.ant-dropdown-link{
 		color: #efaf27;

@@ -17,25 +17,18 @@ export default class Header extends Component{
     this.state = {
       tel: ms.getStorage('userTel')
     }
+    this.onLogout = this.onLogout.bind(this)
   }
   onLogout(){
-    ls.logout().then(res => {
-      ms.removeStorage('userTel');
-    }, errMsg => {
-      ms.errorTips(errMsg)
-    })
+    ms.removeStorage('userTel');
+    ms.removeStorage('token');
   }
   render(){
   	const menu=(
       <Menu>
         <Menu.Item>
-          <Link to="/login" onClick={this.onLogout}>
+          <Link to="/user">
             我的订单
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link to="/login" onClick={this.onLogout}>
-            修改地址
           </Link>
         </Menu.Item>
         <Menu.Item>
@@ -48,13 +41,13 @@ export default class Header extends Component{
     return(
       <header className="site-layout-header">
         <div className="header-item">
-          <img src={logo} className="logo"></img>
-          <span>KEKE Drinks</span>
+            <img src={logo} className="logo"></img>
+            <span>KEKE Drinks</span>
         </div>
         <div className="header-item">
           <ul className="sider-menu" role="menu">
             <NavLink exact activeClassName="item-selected" to="/drinks">
-            <li>Drinks</li>
+              <li>Drinks</li>
             </NavLink>
             <NavLink activeClassName="item-selected" to="/dessert">
               <li>Dessert</li>
@@ -72,7 +65,7 @@ export default class Header extends Component{
           this.state.tel
           ?(
             <div>
-              <Link to="/cart" onClick={this.onLogout}>
+              <Link to="/cart">
                 <img src={cart} className="img-cart"/>
               </Link>
               <Dropdown overlay={menu}>
@@ -85,11 +78,11 @@ export default class Header extends Component{
             )
           :(
             <div>
-              <Link to="/signin" className="ant-dropdown-link">
-                <Button type="primary">Sign in</Button>
+              <Link to="/login">
+                <Button className="btn" size="small">Sign in</Button>
               </Link>
-              <Link to="/signup" className="ant-dropdown-link">
-                <Button type="primary">Sign up</Button>
+              <Link to="/login">
+                <Button className="btn" size="small">Sign up</Button>
               </Link>
             </div>
             )

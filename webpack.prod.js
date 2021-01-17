@@ -1,18 +1,11 @@
-const path = require('path')
-const webpack =require('webpack')
+const { merge } = require('webpack-merge')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const commonConfig = require('./webpack.common.js')
 
-module.exports = {
-  entry: {
-    app: './src/app.jsx'
-  },
-  output: {
-    filename: 'js/[name].js',
-    path: path.join(__dirname, './dist')
-  },
+const prodConfig = {
   module: {
     rules: [
       {
@@ -27,11 +20,7 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
-      },
-      { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=5000&name=img/[name].[ext]' },
-      { test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader?limit=5000&name=resource/[name].[ext]' },
-      { test: /\.jsx$/, use: 'babel-loader', exclude: /(node_modules)/ }
-    ]
+      }]
   },
   plugins: [
     new htmlWebpackPlugin({
@@ -62,3 +51,5 @@ module.exports = {
   },
   mode: 'production'
 }
+
+module.exports = merge(commonConfig, prodConfig)

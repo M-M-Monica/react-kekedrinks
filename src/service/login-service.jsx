@@ -25,8 +25,30 @@ export default class LoginService {
       msg: '验证通过'
     }
   }
-  // 用户登录
   login(loginInfo) {
+    let token = ms.getStorage('token');
+    if (!token) {
+      return ms.request({
+        method: 'post',
+        url: '/token',
+        data: loginInfo
+        /*data: {
+          ...loginInfo,
+          type: '150'
+        }*/
+      });
+    }else {
+      return ms.request({
+        method: 'post',
+        url: '/verify',
+        data: {
+          token: token
+        }
+      });
+    }
+  }
+  // 用户登录
+  /*login(loginInfo) {
     return ms.request({
       method: 'post',
       url: '/manage/user/login',
@@ -38,5 +60,5 @@ export default class LoginService {
     return ms.request({
       url: '/manage/user/logout'
     });
-  }
+  }*/
 }
