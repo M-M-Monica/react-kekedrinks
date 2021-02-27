@@ -32,10 +32,6 @@ export default class LoginService {
         method: 'post',
         url: '/token',
         data: loginInfo
-        /*data: {
-          ...loginInfo,
-          type: '150'
-        }*/
       });
     }else {
       return ms.request({
