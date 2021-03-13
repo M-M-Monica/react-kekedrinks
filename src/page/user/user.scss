@@ -4,8 +4,16 @@
   padding: 10px;
   p{
     display: flex;
+    align-items: center;
+    text-align: center;
     span{
-      flex: 0 0 25%;
+      flex: 1;
+      &:last-child{
+        flex: 0 0 30%;
+      }
+      button{
+        margin: 2px;
+      }
     }
   }
   .list-item{

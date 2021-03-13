@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { message, Pagination } from 'antd';
 import MyService from '../../service/request.jsx';
 import ProductService from '../../service/product-service.jsx';
-//import CartService from '../../service/cart-service.jsx';
 const ms = new MyService();
 const ps = new ProductService();
-//const cs = new CartService();
 import './product.scss';
 import add from '../../static/add.png'
 
@@ -30,9 +28,7 @@ export default class Product extends Component {
       pageNum: this.state.pageNum,
       pageSize: this.state.pageSize
     };
-    console.log('listParam',listParam)
     ps.getProductList(listParam).then(res => {
-      console.log('res',res)
       this.setState({
         count: res.count,
         list: res.rows
@@ -61,7 +57,7 @@ export default class Product extends Component {
       {
         this.state.list.map((item, index) => {
           return (
-            <div className="list-item">
+            <div className="list-item" key={item.id}>
               <img className="pic" src={item.img} />
               <div className="list-item-info">
                 <p>{item.name}</p>

@@ -26,14 +26,4 @@ export default class OrderService {
       url: `/order/cancel/${id}`
     })
   }
-  // 获取订单详情
-  // getOrderDetail(orderId) {
-  //   return ms.request({
-  //     method: 'post',
-  //     url: '/manage/order/detail',
-  //     data: {
-  //       id: orderId
-  //     }
-  //   });
-  // }
 }

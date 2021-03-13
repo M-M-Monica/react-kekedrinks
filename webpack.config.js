@@ -1,5 +1,3 @@
-// const path = require('path');
-// const htmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge')
 const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin');

@@ -42,7 +42,7 @@ export default class Home extends Component {
         {
           this.state.list.map((item, index) => {
             return (
-              <div>
+              <div key={item.id}>
                 <p>
                   <span>订单号：{item.id}</span>
                   <span>合计￥：{item.total}</span>
@@ -65,7 +65,7 @@ export default class Home extends Component {
                 {
                   item.Products.map((ele, index) => {
                     return(
-                      <div className="list-item">
+                      <div className="list-item" key={ele.id}>
                         <img className="pic" src={ele.img} />
                         <div className="list-item-info">
                           <span>{ele.name}</span>

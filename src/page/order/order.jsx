@@ -21,6 +21,7 @@ export default class Order extends Component {
       showInfo: false
     };
     this.changeUserInfo = this.changeUserInfo.bind(this);
+    this.cancel = this.cancel.bind(this);
     this.onFinish = this.onFinish.bind(this);
 	}
   componentDidMount() {
@@ -76,6 +77,11 @@ export default class Order extends Component {
       showInfo: true
     });
   }
+  cancel(){
+    this.setState({
+      showInfo: false
+    });
+  }
   onFinish(values){
     let userInfo = {
       name: values.name,
@@ -125,7 +131,7 @@ export default class Order extends Component {
           {
             this.state.list.map((item, index) => {
               return (
-                <p className="list-item">
+                <p className="list-item" key={item.id}>
                   <img className="pic" src={item.img} />
                   <span>{item.name}</span>
                   <span>数量：{item.CartList.count}</span>
@@ -181,7 +187,8 @@ export default class Order extends Component {
                 <Input placeholder="请输入收货地址" value={this.state.user.address}/>
               </Item>
               <Item>
-                <Button type="primary" htmlType="submit">Submit</Button>
+                <Button className="btn" onClick={this.cancel}>Cancel</Button>
+                <Button className="btn" htmlType="submit">Submit</Button>
               </Item>
             </Form>
             </div>

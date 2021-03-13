@@ -43,18 +43,4 @@ export default class LoginService {
       });
     }
   }
-  // 用户登录
-  /*login(loginInfo) {
-    return ms.request({
-      method: 'post',
-      url: '/manage/user/login',
-      data: loginInfo
-    });
-  }
-  // 退出登录
-  logout() {
-    return ms.request({
-      url: '/manage/user/logout'
-    });
-  }*/
 }

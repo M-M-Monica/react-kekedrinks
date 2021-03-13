@@ -24,7 +24,6 @@ export default class Home extends Component {
   // 加载购物车列表
   loadCartList() {
     cs.getCartList().then(res => {
-      console.log('cart',res)
       let cartList = res
       let sum = 0
       let single
@@ -99,7 +98,7 @@ export default class Home extends Component {
         {
           this.state.list.map((item, index) => {
             return (
-              <div className="list-item">
+              <div className="list-item" key={item.id}>
                 <Checkbox checked={item.CartList.status} onChange={()=>this.selectChange(item.id)}></Checkbox>
                 <img className="pic" src={item.img} />
                 <div className="list-item-info">
