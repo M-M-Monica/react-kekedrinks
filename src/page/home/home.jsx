@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ke from '../../static/ke.png'
 
-export default class Home extends Component {
-	constructor(props) {
-		super(props);
-	}
-	render() {
-		return (
-			<img src={ke} className="site-logo" />
-		);
-	}
+const Home = () => {
+	return (
+    <img src={ke} className="site-logo" />
+  );
 }
+
+export default Home

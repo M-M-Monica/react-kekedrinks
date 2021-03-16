@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class ErrorPage extends Component {
-	constructor(props) {
-		super(props);
-	}
-	render() {
-		return (
-			<div>出错啦！</div>
-		);
-	}
+const ErrorPage = () => {
+	return (
+    <div>出错啦！</div>
+  );
 }
+
+export default ErrorPage
