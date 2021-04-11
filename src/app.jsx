@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+//import { Provider } from 'react-redux';
+//import store from './store';
 
 import Layout from './component/layout/layout.jsx';
 import Login from './page/login/login.jsx';
@@ -27,12 +29,14 @@ class App extends Component {
       </Layout>
     );
     return(
-      <Router>
-        <Switch>
-          <Route path="/login" component={Login}/>
-          <Route path="/" render={props => LayoutRouter}/>
-        </Switch>
-      </Router>
+      //<Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path="/login" component={Login}/>
+            <Route path="/" render={props => LayoutRouter}/>
+          </Switch>
+        </Router>
+      //</Provider>
     );
   }
 }

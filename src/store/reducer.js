@@ -1,14 +1,12 @@
-// import { combineReducers } from 'redux-immutable';
-// import { reducer as headerReducer } from '../common/header/store';
-// import { reducer as homeReducer } from '../pages/home/store';
-// import { reducer as detailReducer } from '../pages/detail/store';
-// import { reducer as loginReducer } from '../pages/login/store';
+// const defaultState = {
+// 	productNum: 0
+// }
 
-// const reducer = combineReducers({
-// 	header: headerReducer,
-// 	home: homeReducer,
-// 	detail: detailReducer,
-// 	login: loginReducer
-// });
-
-// export default reducer;
+// export default (state = defaultState, action) => {
+// 	if(action.type === 'add_goods'){
+// 		const newState = JSON.parse(JSON.stringify(state))
+// 		newState.productNum += 1
+// 		return newState
+// 	}
+// 	return state
+// }

@@ -7,7 +7,7 @@ const ps = new ProductService();
 import './product.scss';
 import add from '../../static/add.png'
 
-export default class Product extends Component {
+class Product extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -80,3 +80,20 @@ export default class Product extends Component {
 		);
 	}
 }
+
+//import { connect } from 'react-redux';
+//import store from '../../store';
+//onClick={this.props.test}
+//const mapDispatchToProps = (dispatch)=>{
+//  return {
+//    test(e){
+//      const action = {
+//        type: 'add_goods'
+//      }
+//      dispatch(action)
+//    }
+//  }
+//}
+//connect(null, mapDispatchToProps)(Product)
+
+export default Product

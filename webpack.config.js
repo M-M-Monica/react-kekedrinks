@@ -22,9 +22,6 @@ const devConfig = {
   devServer: {
     port: 8800,
     hot: true,
-    historyApiFallback: {
-      index: '/dist/index.html'
-    },
     proxy: {
       '/' : {
         target: 'http://localhost:3000',

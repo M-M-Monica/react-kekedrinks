@@ -9,7 +9,7 @@ import logo from '../../static/drink.png';
 import cart from '../../static/cart.png';
 import my from '../../static/my.png';
 
-export default class Header extends Component{
+class Header extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -90,3 +90,16 @@ export default class Header extends Component{
     );
   }
 }
+
+//import { connect } from 'react-redux';
+//import store from '../../store';
+//<div className="cart-num">{this.props.productNum}</div>
+//const mapStateToProps = (state)=>{
+//  return {
+//    productNum: state.productNum
+//}
+//}
+//connect(mapStateToProps, null)(Header)
+
+
+export default Header
